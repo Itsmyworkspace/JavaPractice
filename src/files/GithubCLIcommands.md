@@ -15,3 +15,40 @@ GitHub CLI commands:
         10. If you want to checkout to the other branch git checkout branch name
         11. To push the code to git repository use below command
             git push --set-upstream upstream master
+
+
+GitHub Actions:
+
+    on push :   // on push to main branch
+
+        on:
+            push:
+                branches: [main]
+
+    on pull_request :   // on pr to main branch 
+
+        on:
+            pull_request:
+                branches: [main]
+
+    on workflow_dispatch:   // on dispatch, we will run the workflow
+
+        on:
+            workflow_dispatch:
+
+    on schedule:   // it runs every scheduled corn
+
+        schedule:
+            - cron: '0 9 * * *'
+
+    on workflow_run:  // it runs after the other workflow is completed and trigger the workflow
+
+        on:
+            workflow_run:
+                workflows: ["CI"]
+                types: [completed]
+
+    on workflow_call:  // it works when a other workflow call this workflow "./.github/workflows/reusable-build.yml@master"
+
+        on:
+            workflow_call:
