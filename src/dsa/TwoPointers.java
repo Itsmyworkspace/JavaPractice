@@ -226,7 +226,7 @@ public class TwoPointers {
         System.out.println(water);
     }
 
-    public static int[] reverseArr(int[] arr){
+    public int[] reverseArr(int[] arr){
         int left =0;
         int right = arr.length-1;
         while(left < right){
@@ -239,7 +239,7 @@ public class TwoPointers {
         return arr;
     }
 
-    public static boolean isValidPalindrome(String str, String approach) {
+    public boolean isValidPalindrome(String str, String approach) {
         boolean flag = true;
         char[] chArr = str.toCharArray();
         switch (approach){
@@ -269,7 +269,7 @@ public class TwoPointers {
         return flag;
     }
 
-    public static int[] twoSum(int[] arr, int target, String approach){
+    public int[] twoSum(int[] arr, int target, String approach){
         switch(approach){
             case "brute force" :
                 for(int i=0;i<arr.length;i++){
@@ -310,7 +310,7 @@ public class TwoPointers {
         return null;
     }
 
-    public static int[] moveZeros(int[] arr, String approach){
+    public int[] moveZeros(int[] arr, String approach){
         switch(approach) {
             case "approach-1" :
                 int index=0;
@@ -341,7 +341,7 @@ public class TwoPointers {
         return arr;
     }
 
-    public static List<Integer> removeDuplicates(int[] arr, String approach){
+    public List<Integer> removeDuplicates(int[] arr, String approach){
         List<Integer> lst = new ArrayList<>();
         switch(approach) {
             case "brute force" :
@@ -383,7 +383,7 @@ public class TwoPointers {
         return lst;
     }
 
-    public static int[] removeElements(int[] arr, int target, String approach){
+    public int[] removeElements(int[] arr, int target, String approach){
         int index = 0;
         switch (approach) {
             case "brute force" :
@@ -417,7 +417,7 @@ public class TwoPointers {
         return  arr;
     }
 
-    public static int[] mergedArr(int[] arr1, int[] arr2, String approach){
+    public int[] mergedArr(int[] arr1, int[] arr2, String approach){
         int[] mergedArr = new int[arr1.length+arr2.length];
 
         switch (approach){
@@ -463,7 +463,7 @@ public class TwoPointers {
     }
 
 
-    public static int[] squareOfSortedArr(int[] arr, String approach) {
+    public int[] squareOfSortedArr(int[] arr, String approach) {
         switch (approach){
             case "brute force" :
                 int index =0;
@@ -494,7 +494,7 @@ public class TwoPointers {
         return arr;
     }
 
-    public static int mostWaterContainer(int[] arr, String approach){
+    public int mostWaterContainer(int[] arr, String approach){
         int max = Integer.MIN_VALUE;
         int area =0;
         switch (approach){
@@ -524,7 +524,7 @@ public class TwoPointers {
         return max;
     }
 
-    public static int[] threeSum(int[] arr, int target, String approach){
+    public int[] threeSum(int[] arr, int target, String approach){
         Set<List<Integer>> set = new HashSet<>();
         List<Integer> lst = new ArrayList<>();
         switch (approach){
@@ -545,22 +545,56 @@ public class TwoPointers {
 
             case "optimum approach" : // [-1, 0, 1, 2, -1, -4]
                 for(int i=0;i<arr.length;i++){
-
+                    int left = i+1, right=arr.length-1;
+                    while(left < right){
+                        if (arr[i]+arr[left]+arr[right]==target){
+                            System.out.println("Target: "+arr[i]+arr[left]+arr[right]);
+                        }
+                    }
                 }
         }
        return null;
     }
 
-//    public static int[] sortColors(int[] arr, String approach){
-//        switch (approach){
-//            case "brute approach" : //[2, 0, 2, 1, 1, 0]
-//                for(int i=0;i<arr.length;i++){
-//                    int x = arr[i];
-//                    if(arr[i]<arr[i+1]){
-//
-//                    }
-//                }
-//        }
-//    }
+    public int[] sortColors(int[] arr, String approach){
+        switch (approach){
+            case "brute approach" : //[2, 0, 2, 1, 1, 0]
+                for(int i=0;i<arr.length-1;i++){
+                    for(int j=i+1;j<arr.length;j++){
+                        if (arr[i] > arr[j]){
+                            int temp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j] = temp;
+                        }
+                    }
+                }
+                System.out.println(Arrays.toString(arr));
+                return arr;
+
+            case "optimum appraoch" :
+                int low=0,mid=0, high= arr.length-1;
+                while(mid <=high){
+                    if(arr[mid]==0){
+                     int x = arr[mid];
+                     arr[mid]=arr[low];
+                     arr[low]=x;
+                     low++;
+                     mid++;
+                    } else if (arr[mid]==1) {
+                        mid++;
+                    }else{
+                        int y = arr[mid];
+                        arr[mid] = arr[high];
+                        arr[high] = y;
+                        high--;
+                    }
+                }
+                System.out.println(Arrays.toString(arr));
+                return arr;
+        }
+        System.out.println(Arrays.toString(arr));
+        return arr;
+    }
+
 
 }

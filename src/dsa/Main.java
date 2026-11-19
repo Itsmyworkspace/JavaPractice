@@ -4,7 +4,14 @@ public class Main {
 
     public static void main(String args[]) {
 
-//        TwoPointers twoPointers = new TwoPointers();
+        TwoPointers twoPointers = new TwoPointers();
+        twoPointers.sortColors(new int[] {2, 0, 1, 2, 1, 0, 2, 1, 0}, "brute approach");
+        twoPointers.sortColors(new int[] {2, 0, 1, 2, 1, 0, 2, 1, 0}, "optimum appraoch");
+
+
+
+
+
 
 //        twoPointers.firstPair(new int[]{1,2,3,4,5,6}, 6);
 //
